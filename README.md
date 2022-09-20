@@ -94,3 +94,13 @@ Selezionare tutti i docenti che insegnano nel Dipartimento
 di Matematica (54)
 
 SELECT DISTINCT departments.name , teachers.name , teachers.surname FROM `teachers` JOIN `course_teacher` ON course_teacher.teacher_id = teachers.id JOIN `courses` ON courses.id = course_teacher.course_id JOIN `degrees` ON degrees.id = courses.degree_id JOIN `departments` ON departments.id = degrees.department_id WHERE departments.name = "Dipartimento di Matematica" ORDER BY teachers.surname ASC;
+
+7. 
+
+SELECT COUNT(exam_student.exam_id) AS "numero_tentativi", students.surname, students.name 
+FROM `exam_student`
+JOIN `students` ON students.id = exam_student.student_id
+JOIN `exams` ON exams.id = exam_student.exam_id
+JOIN `courses` ON courses.id = exams.course_id
+WHERE exam_student.vote <= 18
+GROUP BY students.id , courses.id;
