@@ -10,13 +10,13 @@ ESERCIZIO SELECT
 5. Selezionare tutti gli appelli d’esame che avvengono nel pomeriggio ( dopo le 14 ) del 20/06/2020 ( 21 ) SELECT * FROM `exams` WHERE `date` = DATE("2020-06-20") AND HOUR(`hour`) >= HOUR("14:00:00"); 
 6. Selezionare tutti i corsi di laurea magistrale ( 38 ) SELECT * FROM `degrees` WHERE `level` = "magistrale"; 
 7. Da quanti dipartimenti è composta l’università? ( 12 ) SELECT COUNT(*) AS "totale_dipartimenti" FROM `departments`; 
-8. Quanti sono gli insegnanti che non hanno un numero di telefono?  (50) SELECT * FROM `teachers` WHERE `phone` IS NOT NULL;
+8. Quanti sono gli insegnanti che non hanno un numero di telefono?  (50)SELECT * FROM `teachers` WHERE `phone` IS NULL; 
 
 ESERCI∑IO GROUP_BY1. 
 
 
 1. Contare quanti iscritti ci sono stati ogni anno 
-SELECT COUNT(*), `enrolment_date` FROM `students` GROUP BY `enrolment_date`;
+SELECT COUNT(*), YEAR(`enrolment_date`) FROM `students` GROUP BY YEAR(`enrolment_date`);
 
 2. Contare gli insegnanti che hanno l’ufficio nello stesso edificio
 SELECT COUNT(*), `office_address` FROM `teachers` GROUP BY `office_address`;
