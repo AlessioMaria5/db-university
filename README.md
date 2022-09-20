@@ -80,8 +80,11 @@ Selezionare tutti i corsi di laurea con i relativi
  
 corsi e insegnanti
 
-SELECT teachers.name , teachers.surname , degrees.name , courses.name , courses.id FROM `degrees` JOIN `courses` ON courses.degree_id = degrees.id JOIN `teachers` ON courses.id = teachers.id;
-
+SELECT degrees.name , course_teacher.teacher_id , teachers.name , teachers.surname 
+FROM `degrees`
+JOIN `courses` ON courses.degree_id = degrees.id
+JOIN `course_teacher` ON course_teacher.course_id = courses.id 
+JOIN `teachers` ON teachers.id = course_teacher.teacher_id;
 6.
  
 Selezionare tutti i docenti che insegnano nel Dipartimento
