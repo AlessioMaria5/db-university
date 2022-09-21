@@ -97,10 +97,9 @@ SELECT DISTINCT departments.name , teachers.name , teachers.surname FROM�
 
 7. 
 
-SELECT COUNT(exam_student.exam_id) AS "numero_tentativi", students.surname, students.name 
+SELECT COUNT(exam_student.vote) AS "numero_tentativi", students.surname, students.name , MAX(exam_student.vote)
 FROM `exam_student`
 JOIN `students` ON students.id = exam_student.student_id
 JOIN `exams` ON exams.id = exam_student.exam_id
 JOIN `courses` ON courses.id = exams.course_id
-WHERE exam_student.vote <= 18
 GROUP BY students.id , courses.id;
